@@ -13,12 +13,14 @@ class tableCell: UITableViewCell {
     
     lazy var cellLabel1:UILabel = {
         let label:UILabel = UILabel()
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     lazy var cellLabel2:UILabel = {
         let label:UILabel = UILabel()
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,6 +28,7 @@ class tableCell: UITableViewCell {
     
     lazy var cellLabel3:UILabel = {
         let label:UILabel = UILabel()
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -33,13 +36,14 @@ class tableCell: UITableViewCell {
     lazy var stack:UIStackView = {
         let stack:UIStackView = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .fillEqually
+        stack.spacing = 20
         return stack
     }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        print("test")
         setupViews()
         setupConstraints()
     }
@@ -48,15 +52,15 @@ class tableCell: UITableViewCell {
         
         contentView.addSubview(stack)
         stack.addArrangedSubview(cellLabel1)
-        let spacer1:UIView = UIView()
-        spacer1.translatesAutoresizingMaskIntoConstraints = true
-        spacer1.heightAnchor.constraint(equalToConstant: 20)
-        stack.addArrangedSubview(spacer1)
+//        let spacer1:UIView = UIView()
+//        spacer1.translatesAutoresizingMaskIntoConstraints = true
+//        spacer1.heightAnchor.constraint(equalToConstant: 20)
+//        stack.addArrangedSubview(spacer1)
         stack.addArrangedSubview(cellLabel2)
-        let spacer2:UIView = UIView()
-        spacer2.translatesAutoresizingMaskIntoConstraints = true
-        spacer2.heightAnchor.constraint(equalToConstant: 20)
-        stack.addArrangedSubview(spacer2)
+//        let spacer2:UIView = UIView()
+//        spacer2.translatesAutoresizingMaskIntoConstraints = true
+//        spacer2.heightAnchor.constraint(equalToConstant: 20)
+//        stack.addArrangedSubview(spacer2)
         stack.addArrangedSubview(cellLabel3)
     }
     
