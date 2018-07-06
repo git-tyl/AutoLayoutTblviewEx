@@ -19,7 +19,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         super.viewDidLoad()
         SetupView()     //view setup
-        LayoutSubView() //auto layout
+        layoutConstraints() //auto layout
         
         //tableview data
         dictTblData = [["title":["Vegetarian"],"rows":["Butter","yogurt","milk"],"type":["Plant and Dairy"],"price":["$7","$9","$3"]],
@@ -40,8 +40,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func SetupView()
     {
     //tableView
-    customTblView = UITableView(frame: CGRect(x:0,y:150,width:100,height:100))
-    customTblView.register(UINib(nibName: "viewControllerCell", bundle: nil), forCellReuseIdentifier: "customCell")
+    customTblView = UITableView()
+    customTblView.register(tableCell.self, forCellReuseIdentifier: "customCell")
     customTblView.dataSource = self
     customTblView.delegate = self
     self.view.addSubview(customTblView)
@@ -55,7 +55,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     titlelbl.textColor =  UIColor.black
     }
     
-    func LayoutSubView()
+    func layoutConstraints()
     {
     //tableview
     customTblView.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +91,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? viewControllerCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? tableCell
     guard (dictTblData[indexPath.section]["rows"]?[indexPath.row]) != nil || (dictTblData[indexPath.section]["price"]?[indexPath.row]) != nil || (dictTblData[indexPath.section]["type"]?[0]) != nil else {
     cell?.cellLabel1.text = "Label1"
     cell?.cellLabel2.text = "Label2"
